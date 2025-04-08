@@ -1,0 +1,19 @@
+.details button{
+    width: 5rem;
+    height: 7vh;
+    border-radius: 5vh;
+    border: 1px solid #ccc;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+.details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem;
+}
+.heroimage img{
+    width: 100%;
+    height: 80vh
+}

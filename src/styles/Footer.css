@@ -1,0 +1,17 @@
+.footer {
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+    background-color: rgb(46, 46, 46);
+    border: 2.5px solid black;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Fix the footer at the bottom */
+    bottom: 0; /* Align it to the bottom of the viewport */
+    left: 0; /* Stretch to the left edge */
+    width: 100%; /* Make it span the full width of the viewport */
+    z-index: 1000; /* Ensure it stays above other elements */
+    padding: 10px; /* Add some padding for spacing */
+}
