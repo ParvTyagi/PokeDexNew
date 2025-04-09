@@ -4,35 +4,97 @@ body, html{
     padding: 0;
     box-sizing: border-box;
     height: 100%;
-    background-color: rgba(191, 235, 247, 0.771);
+    overflow: hidden; /* Prevent scrollbars caused by angled borders */
+    background-color: #FF5349;
 }
-.T{
-    position: absolute;
-    background-color: #FF5349;
-    height: 18vh;
-    width: 100%;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;    
-}   
-.B{
-    position: absolute;
-    background-color: #FF5349;
-    height: 18vh;
-    width: 100%;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;    
-}   
-.landing-page {;
+
+.landing-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    /* Light background color */
+    position: relative;
+    background-color: #FF5349;
+    overflow: hidden;
+}
+
+/* Top border with angled edge */
+.top-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background-color: #333;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%);
+    z-index: 1;
+}
+
+/* Bottom border with angled edge */
+.bottom-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background-color: #333;
+    clip-path: polygon(0 20%, 80% 0, 100% 0, 100% 100%, 0 100%);
+    z-index: 1;
+}
+
+/* White circles on top right */
+.circle-1, .circle-2 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.circle-1 {
+    top: 35px;
+    right: 120px;
+}
+
+.circle-2 {
+    top: 35px;
+    right: 50px;
+}
+
+/* Corner pokeball in bottom right */
+.corner-pokeball {
+    position: absolute;
+    bottom: 35px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ccc;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.corner-pokeball-top {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #8B1E1E;
+}
+
+.corner-pokeball-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 50%;
+    border: 4px solid #333;
+    z-index: 3;
 }
 
 /* Container for loader and pokeball */
@@ -43,6 +105,7 @@ body, html{
     justify-content: center;
     height: 26rem;
     width: 26rem;
+    z-index: 10; /* Ensure this is above the borders */
 }
 
 /* Pokéball Styling */
@@ -54,6 +117,7 @@ body, html{
     width: 15rem;
     border: 3rem solid skyblue;
     border-radius: 50%;
+    background-color: rgba(191, 235, 247, 0.771);
     /* animation: rotateY 3s linear infinite; */
     transform-style: preserve-3d; /* Helps with the 3D effect */
     position: relative; /* Ensures proper stacking context */
@@ -93,6 +157,7 @@ body, html{
     border-bottom: 1rem solid skyblue;
     animation: spin 2s linear infinite;
 }
+
 .poke-ring{
     display: flex;
     align-items: center;
@@ -104,15 +169,12 @@ body, html{
     animation: rotateX 3s ease-in infinite; /* Y-axis rotation animation */
     transform-style: preserve-3d; /* Helps with the 3D effect */ 
 }
+
 /* Button container to ensure clickability */
 .button {
     position: absolute;
     z-index: 20; /* Higher z-index to ensure it's above other elements */
-    /* Apply the counterclockwise rotation to the button container instead */
-
 }
-
-/* Pause button container animation on hover */
 
 /* Button in the center of the Pokéball */
 button {
@@ -126,7 +188,6 @@ button {
     position: relative; /* Ensure proper positioning */
     z-index: 20; /* Higher z-index */
     pointer-events: auto; /* Explicitly enable pointer events */
-    
 }
 
 button:hover {
@@ -142,6 +203,7 @@ button:hover {
         transform: rotateY(360deg);
     }
 }
+
 @keyframes rotateX {
     0% {
         transform: rotateX(0deg);
@@ -150,7 +212,6 @@ button:hover {
         transform: rotateX(360deg);
     }
 }
-
 
 /* Keyframes for clockwise spinning animation */
 @keyframes spin {
@@ -161,5 +222,3 @@ button:hover {
         transform: rotate(360deg);
     }
 }
-
-/* Keyframes for anticlockwise spinning animation */
