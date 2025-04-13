@@ -7,6 +7,8 @@ import Favourite from './Pages/Favourite';
 import SNE from './Pages/SNE';
 import Pokedex from './Pages/Pokedex';
 import LandingPage from './Pages/LandingPage';
+import Indigo from './Pages/Season & Episode/Indigo';
+import Orange from './Pages/Season & Episode/Orange';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -25,8 +27,12 @@ const router = createBrowserRouter([
     element: <App><SNE /></App>,
   },
   {
-    path: '/Pokedex',
-    element: <App><Pokedex /></App>,
+    path: '/season/1',
+    element: <App><Indigo/></App>,
+  },
+  {
+    path: '/season/2',
+    element: <App><Orange /></App>,
   }
 ]);
 

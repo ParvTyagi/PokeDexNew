@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/SNE.css';
 
 const seasons = [
@@ -18,17 +19,20 @@ const seasons = [
     image: "https://archives.bulbagarden.net/media/upload/4/4d/Orange_League_logo.png",
     description: "Ash travels through the Orange Islands, collecting badges and making new friends.",
   },
-  // Add more seasons as needed
 ];
 
 const SNE = () => {
-  const [selectedSeason, setSelectedSeason] = useState(null);
+  const navigate = useNavigate();
+
+  const handleSeasonClick = (seasonId) => {
+    navigate(`/season/${seasonId}`);
+  };
 
   return (
     <div className="sne-container">
       <div className="sne-header">
-        <h1>Pokémon Seasons & Episodes</h1>
-        <p>Explore all the seasons and episodes of your favorite Pokémon series!</p>
+        <h1>Pokémon Seasons</h1>
+        <p>Choose a season to explore episodes!</p>
       </div>
 
       <div className="seasons-grid">
@@ -36,7 +40,7 @@ const SNE = () => {
           <div 
             key={season.id} 
             className="season-card"
-            onClick={() => setSelectedSeason(season)}
+            onClick={() => handleSeasonClick(season.id)}
           >
             <div className="season-image">
               <img src={season.image} alt={season.title} />
@@ -52,21 +56,6 @@ const SNE = () => {
           </div>
         ))}
       </div>
-
-      {selectedSeason && (
-        <div className="season-modal">
-          <div className="modal-content">
-            <button className="close-button" onClick={() => setSelectedSeason(null)}>×</button>
-            <h2>{selectedSeason.title}</h2>
-            <img src={selectedSeason.image} alt={selectedSeason.title} />
-            <p>{selectedSeason.description}</p>
-            <div className="season-stats">
-              <div>Episodes: {selectedSeason.episodes}</div>
-              <div>Year: {selectedSeason.year}</div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
