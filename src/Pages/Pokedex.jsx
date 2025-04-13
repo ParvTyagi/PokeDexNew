@@ -238,26 +238,41 @@ function App() {
     async function fetchDefaultPokemon() {
       try {
         setLoading(true);
-        // Fetch the first 20 Pokemon
-        const response = await fetch(`${POKEAPI_BASE_URL}/pokemon?limit=20`);
-        const data = await response.json();
-        
-        // Get details for each Pokemon
+
+        // Fetch the Pokémon list from the local API
+        const response = await fetch("http://localhost:3000/pokemon");
+        if (!response.ok) throw new Error("Failed to fetch Pokémon from local API");
+
+        const localPokemonList = await response.json();
+
+        // Fetch additional details for each Pokémon from the PokéAPI
         const pokemonDetails = await Promise.all(
-          data.results.map(async (pokemon) => {
-            const res = await fetch(pokemon.url);
-            return res.json();
+          localPokemonList.map(async (pokemon) => {
+            const pokeApiResponse = await fetch(`${POKEAPI_BASE_URL}/pokemon/${pokemon.id}`);
+            if (!pokeApiResponse.ok) throw new Error(`Failed to fetch details for Pokémon ID ${pokemon.id}`);
+            const pokeApiData = await pokeApiResponse.json();
+
+            return {
+              id: pokemon.id,
+              name: pokemon.name,
+              types: pokemon.types, // Assuming `types` is part of the local API response
+              height: pokeApiData.height,
+              weight: pokeApiData.weight,
+              sprites: pokeApiData.sprites,
+              abilities: pokeApiData.abilities,
+              species: pokeApiData.species,
+            };
           })
         );
-        
+
         setPokemonList(pokemonDetails);
       } catch (error) {
-        console.error("Error fetching default Pokemon:", error);
+        console.error("Error fetching Pokémon data:", error);
       } finally {
         setLoading(false);
       }
     }
-    
+
     fetchDefaultPokemon();
   }, []);
 
@@ -298,48 +313,53 @@ function App() {
           </div>
         )}
         
-        {!currentPokemon && !loading && pokemonList.length > 0 && (
+        {/* Render Pokémon Grid */}
+        {!currentPokemon && !loading && pokemonList?.length > 0 && (
           <div>
             <div className="pokemon-grid">
-              {pokemonList.map(poke => (
-                  <div key={poke.id} className="pokemon-card" onClick={() => {
+              {pokemonList.map((poke) => (
+                <div
+                  key={poke.id}
+                  className="pokemon-card"
+                  onClick={() => {
                     setCurrentPokemon(poke);
                     fetchSpeciesData(poke.species.url);
                     fetchLocations(poke.id);
-                  }}>
-                    <div className="pokemon-image">
-                      <img 
-                        src={poke.sprites.other['official-artwork'].front_default || poke.sprites.front_default} 
-                        alt={poke.name}
-                      />
+                  }}
+                >
+                  <div className="pokemon-image">
+                    <img
+                      src={
+                        poke.sprites?.other['official-artwork']?.front_default ||
+                        poke.sprites?.front_default
+                      }
+                      alt={poke.name}
+                    />
+                  </div>
+                  <div className="pokemon-info">
+                    <div className="pokemon-name">
+                      #{poke.id.toString().padStart(3, '0')} {poke.name}
                     </div>
-                    <div className="pokemon-info">
-                      <div className="pokemon-name">
-                        #{poke.id.toString().padStart(3, '0')} {poke.name}
+                    <div className="pokemon-types">
+                      {poke.types?.map((type) => (
+                        <span key={type.type.name} className={`type-badge ${type.type.name}`}>
+                          {type.type.name}
+                        </span>
+                      ))}
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                      <div>
+                        <p style={{ fontSize: '0.8rem', color: '#aaa' }}>Height</p>
+                        <p>{(poke.height / 10).toFixed(1)}m</p>
                       </div>
-                      <div className="pokemon-types">
-                        {poke.types.map(type => (
-                          <span 
-                            key={type.type.name} 
-                            className={`type-badge ${type.type.name}`}
-                          >
-                            {type.type.name}
-                          </span>
-                        ))}
-                      </div>
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                        <div>
-                          <p style={{ fontSize: '0.8rem', color: '#aaa' }}>Height</p>
-                          <p>{(poke.height / 10).toFixed(1)}m</p>
-                        </div>
-                        <div>
-                          <p style={{ fontSize: '0.8rem', color: '#aaa' }}>Weight</p>
-                          <p>{(poke.weight / 10).toFixed(1)}kg</p>
-                        </div>
+                      <div>
+                        <p style={{ fontSize: '0.8rem', color: '#aaa' }}>Weight</p>
+                        <p>{(poke.weight / 10).toFixed(1)}kg</p>
                       </div>
                     </div>
                   </div>
-                ))}
+                </div>
+              ))}
             </div>
           </div>
         )}
