@@ -27,6 +27,10 @@ const router = createBrowserRouter([
     element: <App><SNE /></App>,
   },
   {
+    path: '/Pokedex',
+    element: <App><Pokedex /></App>,
+  },
+  {
     path: '/season/1',
     element: <App><Indigo/></App>,
   },
