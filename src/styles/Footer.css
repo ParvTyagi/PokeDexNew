@@ -8,7 +8,7 @@
     border-radius: 5px;
     justify-content: center;
     align-items: center;
-    position: relative; /* Fix the footer at the bottom */
+    position: inherit; /* Fix the footer at the bottom */
     bottom: 0; /* Align it to the bottom of the viewport */
     left: 0; /* Stretch to the left edge */
     width: 100%; /* Make it span the full width of the viewport */

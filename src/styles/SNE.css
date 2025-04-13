@@ -1,0 +1,127 @@
+.sne-container {
+  padding: 2rem;
+    min-height: 100vh;
+}
+
+.sne-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sne-header h1 {
+  color: #202020;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.sne-header p {
+  color: #302f2f;
+  font-size: 1.2rem;
+}
+
+.seasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.season-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.season-card:hover {
+  transform: translateY(-5px);
+}
+
+.season-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.season-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.season-info {
+  padding: 1.5rem;
+}
+
+.season-info h2 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.season-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.description {
+  color: #777;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Modal Styles */
+.season-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #cc0000;
+}
+
+.season-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+  .seasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sne-header h1 {
+    font-size: 2rem;
+  }
+}

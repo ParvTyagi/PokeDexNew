@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 // Define the PokeAPI base URL
 const POKEAPI_BASE_URL = "https://pokeapi.co/api/v2";
 
-function App() {
+function Pokedex() {
   // Search state
   const [searchTerm, setSearchTerm] = useState('');
   const [searchError, setSearchError] = useState(null);
@@ -573,4 +573,4 @@ function App() {
   );
 }
 
-export default App;
+export default Pokedex;

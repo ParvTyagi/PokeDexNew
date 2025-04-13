@@ -4,7 +4,7 @@ body, html{
     padding: 0;
     box-sizing: border-box;
     height: 100%;
-    overflow: hidden; /* Prevent scrollbars caused by angled borders */
+    overflow: scroll; /* Prevent scrollbars caused by angled borders */
     background-color: #FF5349;
 }
 
