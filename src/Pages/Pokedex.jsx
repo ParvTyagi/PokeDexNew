@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import '../styles/Pokedex.css'; // Import your CSS file for styling
 // Define the PokeAPI base URL
 const POKEAPI_BASE_URL = "https://pokeapi.co/api/v2";
 
