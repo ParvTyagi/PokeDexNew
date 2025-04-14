@@ -14,27 +14,28 @@ datasource db {
 }
 
 model Pokemon {
-  id Int @id @default(autoincrement())
-  name String
-  type String
-  photo Bytes?
+  id     Int     @id @default(autoincrement())
+  name   String
+  type   String
+  isFav  Boolean
+  photo  Bytes?
   height String
   weight String
 }
 
 model Season {
-  id Int @id @default(autoincrement())
-  image String
-  name String
+  id       Int    @id @default(autoincrement())
+  image    String
+  name     String
   episodes String
-  year String
-  desc String
+  year     String
+  desc     String
 }
 
 model Movies {
-  id Int @id @default(autoincrement())
+  id    Int    @id @default(autoincrement())
   image String
-  name String
-  year String
-  desc String
+  name  String
+  year  String
+  desc  String
 }
