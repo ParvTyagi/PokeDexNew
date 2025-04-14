@@ -33,6 +33,17 @@ app.get('/movies', async (req, res) => {
     }
 });
 
+app.get('/pokemon/favorites', async (req, res) => {
+    try {
+        const favoritePokemon = await prisma.pokemon.findMany({
+            where: { isFav: true },
+        });
+        res.json(favoritePokemon);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to fetch favorite Pokémon' });
+    }
+});
 
 app.get('/season', async (req, res) => {
     try {

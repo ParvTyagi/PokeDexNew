@@ -27,6 +27,30 @@ function Pokedex() {
   // Filter state for the main grid
   const [searchGridTerm, setSearchGridTerm] = useState('');
 
+  // Function to toggle favorite status
+  const toggleFavorite = async (pokemonId) => {
+    try {
+      const response = await fetch(`http://localhost:3000/pokemon/${pokemonId}/favorite`, {
+        method: 'PUT',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update favorite status');
+      }
+
+      const updatedPokemon = await response.json();
+
+      // Update the local state to reflect the change
+      setPokemonList((prevList) =>
+        prevList.map((pokemon) =>
+          pokemon.id === updatedPokemon.id ? { ...pokemon, isFav: updatedPokemon.isFav } : pokemon
+        )
+      );
+    } catch (error) {
+      console.error('Error toggling favorite status:', error);
+    }
+  };
+
   // Search for Pokemon function
   const searchPokemon = async (event) => {
     event.preventDefault();
@@ -323,7 +347,7 @@ function Pokedex() {
                   className="pokemon-card"
                   onClick={() => {
                     setCurrentPokemon(poke);
-                    fetchSpeciesData(poke.species.url);
+                    fetchSpeciesData(poke.species?.url);
                     fetchLocations(poke.id);
                   }}
                 >
@@ -347,16 +371,12 @@ function Pokedex() {
                         </span>
                       ))}
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '4fr 4fr', gap: '10px' }}>
-                      <div>
-                        <p style={{ fontSize: '0.8rem', color: '#aaa' }}>Height</p>
-                        <p>{(poke.height / 10).toFixed(1)}m</p>
-                      </div>
-                      <div>
-                        <p style={{ fontSize: '0.8rem', color: '#aaa' }}>Weight</p>
-                        <p>{(poke.weight / 10).toFixed(1)}kg</p>
-                      </div>
-                    </div>
+                    <button
+                      className={`favorite-button ${poke.isFav ? 'favorited' : ''}`}
+                      onClick={() => toggleFavorite(poke.id)}
+                    >
+                      {poke.isFav ? '★ Unfavorite' : '☆ Favorite'}
+                    </button>
                   </div>
                 </div>
               ))}
