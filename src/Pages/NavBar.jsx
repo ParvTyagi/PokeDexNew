@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/NavBar.css';
 import logo from '../assets/pokedex-logo.svg';
@@ -10,6 +10,17 @@ const NavBar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const closeMenu = (e) => {
+      if (!e.target.closest('.NavBar')) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener('click', closeMenu);
+    return () => window.removeEventListener('click', closeMenu);
+  }, []);
+
   return (
     <nav className="NavBar">
       {/* Logo */}
@@ -19,7 +30,7 @@ const NavBar = () => {
 
       {/* Hamburger Menu */}
       <button 
-        className="hamburger-menu" 
+        className={`hamburger-menu ${isMenuOpen ? 'open' : ''}`}
         onClick={toggleMenu}
         aria-label="Toggle navigation menu"
       >
