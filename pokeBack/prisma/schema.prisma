@@ -24,10 +24,17 @@ model Pokemon {
 
 model Season {
   id Int @id @default(autoincrement())
+  image String
   name String
+  episodes String
+  year String
+  desc String
 }
 
 model Movies {
   id Int @id @default(autoincrement())
+  image String
   name String
+  year String
+  desc String
 }

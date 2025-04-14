@@ -347,7 +347,7 @@ function Pokedex() {
                         </span>
                       ))}
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '4fr 4fr', gap: '10px' }}>
                       <div>
                         <p style={{ fontSize: '0.8rem', color: '#aaa' }}>Height</p>
                         <p>{(poke.height / 10).toFixed(1)}m</p>
