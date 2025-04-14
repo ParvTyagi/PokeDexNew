@@ -38,6 +38,7 @@ const SNE = () => {
   return (
     <div className="sne-container">
       <div className="sne-header">
+        
         <h1>Pokémon Seasons</h1>
         <p>Choose a season to explore episodes!</p>
       </div>

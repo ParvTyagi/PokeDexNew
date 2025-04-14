@@ -129,7 +129,12 @@ body, html {
 /* Responsive Design */
 @media (max-width: 768px) {
   .NavBar {
-    position: relative;
+
+    position: sticky; /* Change from relative to fixed */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
   }
 
   .hamburger-menu {
@@ -137,38 +142,48 @@ body, html {
   }
 
   .nav-list {
-    position: absolute;
-    top: 70px;
+    display: flex;
+    position: fixed;
+    top: 76px; /* Height of navbar + padding */
     left: 0;
     right: 0;
-    flex-direction: column;
     background-color: #ffffff;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+    flex-direction: column;
+    align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 0;
-    margin: 0;
-    border-radius: 0 0 8px 8px;
-  }
+    border: 2.5px solid black;
+    border-radius: 5px;
+    z-index: 1000;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
 
-  .nav-list.open {
-    max-height: 300px;
-    opacity: 1;
-    padding: 10px 0;
   }
   
+  .nav-list.open {
+    max-height: calc(100vh - 76px);
+    opacity: 1;
+    visibility: visible;
+    overflow-y: auto;
+  }
+
   .nav-list li {
     width: 100%;
     text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
   }
-  
+
   .nav-button {
     display: block;
     width: 90%;
     margin: 5px auto;
     box-sizing: border-box;
+  }
+
+  /* Add margin to main content to prevent overlap */
+  body {
+    padding-top: 76px; /* Same as navbar height */
   }
 }
