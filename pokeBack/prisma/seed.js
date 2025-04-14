@@ -81,37 +81,37 @@ const moviesDB = [
       name: "Pokémon: The First Movie",
       year: "1998",
       desc: "Ash and his friends face off against the legendary Pokémon Mewtwo.",
-      image: "/assets/movies/first-movie.jpg",
+      image: "/src/assets/first-movie.jpg",
   },
   {
       name: "Pokémon: The Movie 2000",
       year: "1999",
       desc: "Ash must save the world from the clash of legendary birds.",
-      image: "/assets/movies/movie-2000.jpg",
+      image: "/src/assets/movies/movie-2000.jpg",
   },
   {
       name: "Pokémon 3: The Movie",
       year: "2000",
       desc: "Ash and friends battle the Unown and Entei to save a young girl.",
-      image: "/assets/movies/movie-3.jpg",
+      image: "/src/assets/movie-3.jpg",
   },
   {
       name: "Pokémon 4Ever",
       year: "2001",
       desc: "Ash and friends meet Celebi and battle a time-traveling villain.",
-      image: "/assets/movies/movie-4ever.jpg",
+      image: "/src/assets/movie-4ever.jpg",
   },
   {
       name: "Pokémon Heroes",
       year: "2002",
       desc: "Ash and friends protect Latios and Latias from thieves in Alto Mare.",
-      image: "/assets/movies/heroes.jpg",
+      image: "/src/assets/heroes.jpg",
   },
   {
       name: "Pokémon: Jirachi—Wish Maker",
       year: "2003",
       desc: "Ash and friends help Jirachi, a wish-granting Pokémon, escape from danger.",
-      image: "/assets/movies/jirachi.jpg",
+      image: "/src/assets/jirachi.jpg",
   },
 ];
 
