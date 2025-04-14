@@ -25,14 +25,6 @@ const Favourite = () => {
     fetchFavorites();
   }, []);
 
-  const toggleFavorite = (id) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.map((poke) =>
-        poke.id === id ? { ...poke, isFav: !poke.isFav } : poke
-      )
-    );
-  };
-
   if (loading) {
     return <div className="loading">Loading favorite Pokémon...</div>;
   }
@@ -66,12 +58,7 @@ const Favourite = () => {
                       </span>
                     ))}
                   </div>
-                  <button
-                    className={`favorite-button ${poke.isFav ? 'favorited' : ''}`}
-                    onClick={() => toggleFavorite(poke.id)}
-                  >
-                    {poke.isFav ? '★ Unfavorite' : '☆ Favorite'}
-                  </button>
+                  
                 </div>
               </div>
             ))}

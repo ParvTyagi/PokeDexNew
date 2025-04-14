@@ -1,34 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/Season&Episodes/Orange.css';
-import image from '../../assets/Episode.jpg'
-
-const episodes = [
-  {
-    id: 83,
-    title: "Pallet Party Panic",
-    airDate: "January 13, 1999",
-    description: "After earning his Indigo League badges, Ash and friends travel to the Orange Islands to deliver a mysterious GS Ball.",
-    image: "https://archives.bulbagarden.net/media/upload/2/2c/EP083.png",
-    jioUrl: "https://www.jiocinema.com/tv-shows/pokemon/2/pallet-party-panic/3497878"
-  },
-  {
-    id: 84,
-    title: "A Scare in the Air",
-    airDate: "January 20, 1999",
-    description: "Ash and friends take a blimp ride to Valencia Island, but Team Rocket threatens to crash the party.",
-    image: "https://archives.bulbagarden.net/media/upload/3/3d/EP084.png",
-    jioUrl: "https://www.jiocinema.com/tv-shows/pokemon/2/a-scare-in-the-air/3497879"
-  },
-  // Add more episodes with their respective JioCinema URLs
-];
+import image from '../../assets/Episode.jpg';
 
 const Orange = () => {
   const navigate = useNavigate();
+  const [episodes, setEpisodes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch episodes for season 2
+  useEffect(() => {
+    const fetchEpisodes = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/episodes/2');
+        if (!response.ok) {
+          throw new Error('Failed to fetch episodes');
+        }
+        const data = await response.json();
+        setEpisodes(data);
+      } catch (error) {
+        console.error('Error fetching episodes:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEpisodes();
+  }, []);
 
   const handleEpisodeClick = (jioUrl) => {
     window.open(jioUrl, '_blank'); // Opens in new tab
   };
+
+  if (loading) {
+    return <div className="loading">Loading episodes...</div>;
+  }
 
   return (
     <div className="orange-container">
@@ -37,13 +43,13 @@ const Orange = () => {
           ← Back to Seasons
         </button>
         <h1>Orange League</h1>
-        <p>Season 2 • 36 Episodes</p>
+        <p>Season 2 • {episodes.length} Episodes</p>
       </div>
 
       <div className="episodes-grid">
         {episodes.map((episode) => (
-          <div 
-            key={episode.id} 
+          <div
+            key={episode.id}
             className="episode-card"
             onClick={() => handleEpisodeClick(episode.jioUrl)}
             style={{ cursor: 'pointer' }}

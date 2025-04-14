@@ -55,6 +55,30 @@ app.get('/season', async (req, res) => {
     }
 });
 
+app.get('/episodes/:season', async (req, res) => {
+    try {
+        const { season } = req.params;
+
+        // Parse the season as an integer
+        const parsedSeason = parseInt(season, 10);
+
+        if (isNaN(parsedSeason)) {
+            return res.status(400).json({ error: 'Invalid season number' });
+        }
+
+        // Fetch episodes for the given season
+        const episodes = await prisma.episode.findMany({
+            where: { season: parsedSeason },
+        });
+
+        res.json(episodes);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to fetch episodes data' });
+    }
+});
+
+
 app.put('/pokemon/:id/favorite', async (req, res) => {
     try {
         const { id } = req.params;

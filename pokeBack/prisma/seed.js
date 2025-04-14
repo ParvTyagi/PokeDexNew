@@ -121,37 +121,120 @@ const seasonDB = [
     episodes: '82',
     year: '1997–1999',
     desc: 'Ash Ketchum begins his journey to become a Pokémon Master, traveling through the Kanto region with his partner Pikachu.',
-    image: 'https://upload.wikimedia.org/wikipedia/en/7/7e/Pok%C3%A9mon_Season_1_DVD.jpg',
+    image: '/src/assets/Indigo.jpg',
   },
   {
     name: 'Pokémon: Adventures in the Orange Islands',
     episodes: '36',
     year: '1999',
     desc: 'Ash continues his quest in the Orange Archipelago, facing unique challenges and earning badges from the Orange Crew.',
-    image: 'https://upload.wikimedia.org/wikipedia/en/2/2d/Pok%C3%A9mon_Season_2_DVD.jpg',
+    image: '/src/assets/Orange.jpg',
   },
   {
     name: 'Pokémon: The Johto Journeys',
     episodes: '41',
     year: '1999–2000',
     desc: 'Ash, Misty, and Brock travel to the Johto region, encountering new Pokémon and competing in the Johto League.',
-    image: 'https://upload.wikimedia.org/wikipedia/en/3/3e/Pok%C3%A9mon_Season_3_DVD.jpg',
+    image: '/src/assets/Johto.jpg',
   },
   {
     name: 'Pokémon: Johto League Champions',
     episodes: '52',
     year: '2000–2001',
     desc: 'Ash continues his journey through Johto, facing new rivals and challenging Gym Leaders to qualify for the Johto League.',
-    image: 'https://upload.wikimedia.org/wikipedia/en/9/9f/Pok%C3%A9mon_Season_4_DVD.jpg',
+    image: '/src/assets/Johto.jpg',
   },
   {
     name: 'Pokémon: Master Quest',
     episodes: '65',
     year: '2001–2002',
     desc: 'Ash and friends conclude their adventures in Johto, culminating in the Johto League Silver Conference.',
-    image: 'https://upload.wikimedia.org/wikipedia/en/0/0b/Pok%C3%A9mon_Season_5_DVD.jpg',
+    image: '/src/assets/Horizon.jpg',
   },
 ];
+
+const episodeDB = [
+    {
+      image: "https://m.media-amazon.com/images/M/MV5BM2EyMjQzZTUtYTg5Yi00MzE3LWIxNTUtNzQ0Y2Y2MjUwZDJlXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_.jpg",
+      name: "Long Day's Journey Into Night",
+      season: 1,
+      link: "https://www.primevideo.com/detail/From/0QFVGZPL4ZT3JRTZIA0HRJGS39",
+      desc: "The Matthews family arrives in a mysterious town they can't escape.",
+      date: "2022-02-20",
+    },
+    {
+      image: "https://m.media-amazon.com/images/M/MV5BM2EyMjQzZTUtYTg5Yi00MzE3LWIxNTUtNzQ0Y2Y2MjUwZDJlXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_.jpg",
+      name: "The Way Things Are Now",
+      season: 1,
+      link: "https://www.primevideo.com/detail/From/0QFVGZPL4ZT3JRTZIA0HRJGS39",
+      desc: "Residents adapt to the town's terrifying nocturnal threats.",
+      date: "2022-02-27",
+    },
+    {
+      image: "https://m.media-amazon.com/images/M/MV5BM2EyMjQzZTUtYTg5Yi00MzE3LWIxNTUtNzQ0Y2Y2MjUwZDJlXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_.jpg",
+      name: "Choosing Day",
+      season: 1,
+      link: "https://www.primevideo.com/detail/From/0QFVGZPL4ZT3JRTZIA0HRJGS39",
+      desc: "Newcomers must decide where they'll reside within the town.",
+      date: "2022-03-06",
+    },
+    {
+      image: "https://m.media-amazon.com/images/M/MV5BM2EyMjQzZTUtYTg5Yi00MzE3LWIxNTUtNzQ0Y2Y2MjUwZDJlXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_.jpg",
+      name: "A Rock and a Farway",
+      season: 1,
+      link: "https://www.primevideo.com/detail/From/0QFVGZPL4ZT3JRTZIA0HRJGS39",
+      desc: "Tensions rise as secrets about the town's origins surface.",
+      date: "2022-03-13",
+    },
+    {
+      image: "https://m.media-amazon.com/images/M/MV5BM2EyMjQzZTUtYTg5Yi00MzE3LWIxNTUtNzQ0Y2Y2MjUwZDJlXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_.jpg",
+      name: "Silhouettes",
+      season: 1,
+      link: "https://www.primevideo.com/detail/From/0QFVGZPL4ZT3JRTZIA0HRJGS39",
+      desc: "A mysterious figure offers hope—or perhaps more danger.",
+      date: "2022-03-20",
+    },
+    {
+      image: "https://m.media-amazon.com/images/M/MV5BM2EyMjQzZTUtYTg5Yi00MzE3LWIxNTUtNzQ0Y2Y2MjUwZDJlXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_.jpg",
+      name: "Strangers in a Strange Land",
+      season: 2,
+      link: "https://www.primevideo.com/detail/From/0QFVGZPL4ZT3JRTZIA0HRJGS39",
+      desc: "The town faces new threats as outsiders arrive.",
+      date: "2023-04-23",
+    },
+    {
+      image: "https://m.media-amazon.com/images/M/MV5BM2EyMjQzZTUtYTg5Yi00MzE3LWIxNTUtNzQ0Y2Y2MjUwZDJlXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_.jpg",
+      name: "The Kindness of Strangers",
+      season: 2,
+      link: "https://www.primevideo.com/detail/From/0QFVGZPL4ZT3JRTZIA0HRJGS39",
+      desc: "Trust is tested among residents and newcomers alike.",
+      date: "2023-04-30",
+    },
+    {
+      image: "https://m.media-amazon.com/images/M/MV5BM2EyMjQzZTUtYTg5Yi00MzE3LWIxNTUtNzQ0Y2Y2MjUwZDJlXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_.jpg",
+      name: "Tether",
+      season: 2,
+      link: "https://www.primevideo.com/detail/From/0QFVGZPL4ZT3JRTZIA0HRJGS39",
+      desc: "Connections between the town and the outside world emerge.",
+      date: "2023-05-07",
+    },
+    {
+      image: "https://m.media-amazon.com/images/M/MV5BM2EyMjQzZTUtYTg5Yi00MzE3LWIxNTUtNzQ0Y2Y2MjUwZDJlXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_.jpg",
+      name: "This Way Gone",
+      season: 2,
+      link: "https://www.primevideo.com/detail/From/0QFVGZPL4ZT3JRTZIA0HRJGS39",
+      desc: "A resident's past threatens the town's fragile peace.",
+      date: "2023-05-14",
+    },
+    {
+      image: "https://m.media-amazon.com/images/M/MV5BM2EyMjQzZTUtYTg5Yi00MzE3LWIxNTUtNzQ0Y2Y2MjUwZDJlXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_.jpg",
+      name: "Lullaby",
+      season: 2,
+      link: "https://www.primevideo.com/detail/From/0QFVGZPL4ZT3JRTZIA0HRJGS39",
+      desc: "A haunting melody reveals deeper mysteries.",
+      date: "2023-05-21",
+    },
+  ];
 
 async function main() {
   for (const movie of moviesDB) {
@@ -174,6 +257,13 @@ async function main() {
     });
   }
   console.log("Seasons data seeded successfully!");
+
+  for(const episode of episodeDB) {
+    await prisma.episode.create({
+      data: episode,
+    });
+  }
+  console.log("Episodes data seeded successfully!");
 }
 
 main()

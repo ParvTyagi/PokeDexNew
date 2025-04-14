@@ -345,11 +345,7 @@ function Pokedex() {
                 <div
                   key={poke.id}
                   className="pokemon-card"
-                  onClick={() => {
-                    setCurrentPokemon(poke);
-                    fetchSpeciesData(poke.species?.url);
-                    fetchLocations(poke.id);
-                  }}
+                  
                 >
                   <div className="pokemon-image">
                     <img
@@ -371,8 +367,7 @@ function Pokedex() {
                         </span>
                       ))}
                     </div>
-                    <button
-                      className={`favorite-button ${poke.isFav ? 'favorited' : ''}`}
+                    <button style={{backgroundColor:'white',borderRadius:'5px',border:'solid 3px',padding:'5px 10px',cursor:'pointer',marginTop:'10px'}}
                       onClick={() => toggleFavorite(poke.id)}
                     >
                       {poke.isFav ? '★ Unfavorite' : '☆ Favorite'}

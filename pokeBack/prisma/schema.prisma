@@ -39,3 +39,13 @@ model Movies {
   year  String
   desc  String
 }
+
+model Episode {
+  id    Int    @id @default(autoincrement())
+  image String
+  name  String
+  season Int
+  link  String
+  desc  String
+  date  String
+}
